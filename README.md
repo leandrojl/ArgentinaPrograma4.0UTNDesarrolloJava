@@ -10,5 +10,5 @@ Este repositorio se utilizara para la subida, organizacion y entrega de los dist
 
 Para resolver los ejercicios se utiliza el lenguaje Java enfocado en el paradigma de Programacion Orientada a Objetos.
 
-### Proximamente!
+
 
