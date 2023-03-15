@@ -1,10 +1,10 @@
-package ar.com.utnArgentinaProgramaClase1;
+package ar.com.UTNArgentinaPrograma;
 
 import java.util.Arrays;
 
 import javax.swing.JOptionPane;
 
-public class ClaseMain {
+public class ClaseDePrueba {
 
 	public static void main(String[] args) {
 		
@@ -22,9 +22,9 @@ public class ClaseMain {
 		
 		String ingresosMensuales = JOptionPane.showInputDialog("Escriba el monto de sus ingresos mensuales Ej: 572386");
 		Integer ingresosMensualesParsed = Integer.parseInt(ingresosMensuales);
-		String cantidadDeVehiculos = JOptionPane.showInputDialog("Tiene 3 o mas vehiculos con una antiguedad menor a 5 años? Respuesta: si o no");
+		String cantidadDeVehiculos = JOptionPane.showInputDialog("Tiene 3 o mas vehiculos con una antiguedad menor a 5 aÃ±os? Respuesta: si o no");
 		String cantidadDePropiedades = JOptionPane.showInputDialog("Tiene 3 o mas propiedades? Respuesta si o no");
-		String cantidadDeActivos = JOptionPane.showInputDialog("Posee una embarcación, una aeronave de lujo o es titular de activos? Respuesta si o no");
+		String cantidadDeActivos = JOptionPane.showInputDialog("Posee una embarcaciÃ³n, una aeronave de lujo o es titular de activos? Respuesta si o no");
 		
 		if(ingresosMensualesParsed >= 489083 && cantidadDeVehiculos.equals("si") && cantidadDePropiedades.equals("si")&& cantidadDeActivos.equals("si") ) {
 			System.out.println("Usted pertenece a la Segmentacion Alta");

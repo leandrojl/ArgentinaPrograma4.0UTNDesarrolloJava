@@ -1,8 +1,8 @@
-package ar.com.utnArgentinaPrograma;
+package ar.com.UTNArgentinaPrograma;
 
 import java.util.Arrays;
 
-public class MainClass {
+public class ClaseDePrueba {
 
 	
 
