@@ -2,7 +2,7 @@
 
 ## Curso de Desarrollador Java Inicial 
 
-##Como abrir el archivo desde Eclipse
+## Como abrir el archivo desde Eclipse
 
 Con el fin de ordenar, los ejercicios de la clase se resuelven en distintos proyectos de Java dentro de un mismo workspace.
 
