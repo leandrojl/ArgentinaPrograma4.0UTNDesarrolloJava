@@ -13,7 +13,7 @@ public class ClaseDePrueba {
 		int[] resultadoEjercicioB= dadosTresNumerosYUnOrdenAscendenteQueLosOrdeneYRetorneEnUnVector(9,2,8,"ascendente");
 		System.out.println(Arrays.toString(resultadoEjercicioB));
 		
-		int[] resultadoEjercicioBbis= dadosTresNumerosYUnOrdenDescendenteQueLosOrdeneYRetorneEnUnVector(9,2,8,"ascendente");
+		int[] resultadoEjercicioBbis= dadosTresNumerosYUnOrdenDescendenteQueLosOrdeneYRetorneEnUnVector(9,2,8,"descendente");
 		System.out.println(Arrays.toString(resultadoEjercicioBbis));
 		
 		int resultadoEjercicioC = dadoUnVectorDeNumerosYUnNumeroXQueSumeLosNumerosMayoresQueXYDevuelvaElResultado();
