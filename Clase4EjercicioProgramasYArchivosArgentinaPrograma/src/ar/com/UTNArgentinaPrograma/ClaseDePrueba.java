@@ -1,5 +1,9 @@
 package ar.com.UTNArgentinaPrograma;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,7 +11,7 @@ public class ClaseDePrueba {
 
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		
 		int[] resultadoEjercicio1A= dadosTresNumerosYUnOrdenAscendenteQueLosOrdeneYRetorneEnUnVector(9,2,8,"a");
@@ -16,24 +20,70 @@ public class ClaseDePrueba {
 		int[] resultadoEjercicio1ABis= dadosTresNumerosYUnOrdenDescendenteQueLosOrdeneYRetorneEnUnVector(9,2,8,"d");
 		System.out.println(Arrays.toString(resultadoEjercicio1ABis));
 		
-		int[] resultadoEjercicioB= dadosTresNumerosYUnOrdenAscendenteQueLosOrdeneYRetorneEnUnVectorYLosPidePorConsola();
-		System.out.println(Arrays.toString(resultadoEjercicioB));
+	//	int[] resultadoEjercicioB= dadosTresNumerosYUnOrdenAscendenteQueLosOrdeneYRetorneEnUnVectorYLosPidePorConsola();
+		//System.out.println(Arrays.toString(resultadoEjercicioB));
 		
 		dadoQueEnvioUnaRutaPorParametroDebeMostrarPorConsolaLaSumaDeNumerosQueLeeEnElArchivo();
 	}
 	
 	
 
-	private static void dadoQueEnvioUnaRutaPorParametroDebeMostrarPorConsolaLaSumaDeNumerosQueLeeEnElArchivo() {
+	private static void dadoQueEnvioUnaRutaPorParametroDebeMostrarPorConsolaLaSumaDeNumerosQueLeeEnElArchivo() throws IOException {
 		Scanner teclado = new Scanner(System.in);
+		boolean exitWhile = true;
 		do {
 			System.out.println("--------------------------------------------");
 			System.out.println("Bienvenido al Lector de Archivos para sumar numeros!\n");
 			System.out.println("Ingrese la ruta del archivo que desea leer y sumar:");
 			System.out.println("--------------------------------------------");
 			
+			String ingresarRuta = teclado.next();
+			//File file2 = new File("."); //Muestra donde esta parado el archivo que ejecuta la funcion
+			//for(String fileNames : file2.list()) System.out.println(fileNames); //Sirve para verificar donde estoy parado en los archivos
+			File file = new File(ingresarRuta);
 			
-		}while(true);
+			
+			
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			
+			String trackOfCurrentLine;
+			Integer sumOfFileNumbers =0;
+			Integer multiplyOfFileNumbers=1;
+			System.out.println("--------------------------------------------");
+			System.out.println("Elija la operacion:");
+			System.out.println("Ingrese 's' para sumar o ingrese 'm' para multiplicar");
+			System.out.println("--------------------------------------------");
+			String elegirOperacion = teclado.next();
+			switch(elegirOperacion) {
+			case "s":
+				while((trackOfCurrentLine =  br.readLine())!=null) {
+					
+					sumOfFileNumbers+= Integer.parseInt(trackOfCurrentLine);
+					System.out.println(trackOfCurrentLine);
+					
+				}
+				System.out.println("La suma de los numeros en el archivo es ="+sumOfFileNumbers);
+				exitWhile=false;
+				break;
+			case "m":
+				while((trackOfCurrentLine =  br.readLine())!=null) {
+					
+					multiplyOfFileNumbers*= Integer.parseInt(trackOfCurrentLine);
+					System.out.println(trackOfCurrentLine);
+					
+				}
+				System.out.println("La multiplicacion de los numeros en el archivo es ="+multiplyOfFileNumbers);
+				exitWhile=false;
+				break;
+			
+			default:
+				System.out.println("Ingrese un caracter valido");
+			}
+			
+			
+			
+			
+		}while(exitWhile);
 		
 	}
 
