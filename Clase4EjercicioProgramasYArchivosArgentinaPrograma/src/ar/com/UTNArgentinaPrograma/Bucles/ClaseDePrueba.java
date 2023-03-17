@@ -1,24 +1,41 @@
 package ar.com.UTNArgentinaPrograma.Bucles;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class ClaseDePrueba {
 
 	public static void main(String[] args) {
+		
+		//DESCOMENTAR LOS METODOS PARA EFECTIVAMENTE TESTEARLOS.
 
 		//Ejercicio 1
 		/*Pedir que se ingrese por teclado un número y mostrar la tabla de multiplicar completa del 0 al 10. 
 		 * Imprimir el multiplicando, el multiplicador y el producto. */
-		dadoQueSeIngresePorTecladoUnNumeroMostrarLaTablaDeMutiplicarDel0al10ImprimiendoElMultiplicandoMultiplicadorYElProducto();
+		
+		//dadoQueSeIngresePorTecladoUnNumeroMostrarLaTablaDeMutiplicarDel0al10ImprimiendoElMultiplicandoMultiplicadorYElProducto();
 		
 		//Ejercicio 2
 		/*Pida al usuario que ingrese 10 números y luego muestre solamente los múltiplos de 2.*/
-		dadoQueElUsuarioIngresa10NumerosSoloMuestroLosMultiplosDe2();
+		
+		//dadoQueElUsuarioIngresa10NumerosSoloMuestroLosMultiplosDe2();
 		
 		//Ejercicio 3
 		/*Pedir que se ingresen 20 números e imprimir cuántos son positivos, cuántos negativos y cuántos neutros.*/
-		dadoQueElUsuarioIngresa20NumerosImprimirCuantosSonPositivosNegativosYNeutros();
+		
+		//dadoQueElUsuarioIngresa20NumerosImprimirCuantosSonPositivosNegativosYNeutros();
+		
+		//Ejercicio 4
+		/*Simular el comportamiento de un reloj digital, imprimiendo la hora, minutos y segundos de un día desde las 0:00:00 horas hasta las 23:59:59 horas.*/
+		
+		dadoQueTengoUnRelojDigitalImprimirTodoElRangoHorarioDe00a23();
+	}
+
+	private static void dadoQueTengoUnRelojDigitalImprimirTodoElRangoHorarioDe00a23() {
+		
+		  
 	}
 
 	private static void dadoQueElUsuarioIngresa20NumerosImprimirCuantosSonPositivosNegativosYNeutros() {
@@ -35,9 +52,16 @@ public class ClaseDePrueba {
 			numeroAGuardar= teclado.nextInt();
 			arrayDeNumeros[i]=numeroAGuardar;		
 		}
+		System.out.println("--------------------------------------------");
+		System.out.println("Los numeros guardados son "+Arrays.toString(arrayDeNumeros));
+		System.out.println("--------------------------------------------");
 		for(int i=0;i<arrayDeNumeros.length;i++) {
-			if(arrayDeNumeros[i] % 2 == 0) {
-				System.out.println("El numero "+arrayDeNumeros[i]+" es multiplo de 2.");
+			if(arrayDeNumeros[i] > 0) {
+				System.out.println("El numero "+arrayDeNumeros[i]+" es positivo");
+			}else if(arrayDeNumeros[i] < 0) {
+				System.out.println("El numero "+arrayDeNumeros[i]+" es negativo");
+			}else {
+				System.out.println("El numero "+arrayDeNumeros[i]+" es neutro");
 			}
 		}
 		
