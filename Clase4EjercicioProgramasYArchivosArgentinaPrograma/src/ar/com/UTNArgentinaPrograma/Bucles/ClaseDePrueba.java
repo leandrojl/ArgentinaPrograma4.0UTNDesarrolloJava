@@ -30,7 +30,22 @@ public class ClaseDePrueba {
 		//Ejercicio 4
 		/*Simular el comportamiento de un reloj digital, imprimiendo la hora, minutos y segundos de un día desde las 0:00:00 horas hasta las 23:59:59 horas.*/
 		
-		dadoQueTengoUnRelojDigitalImprimirTodoElRangoHorarioDe00a23();
+		//dadoQueTengoUnRelojDigitalImprimirTodoElRangoHorarioDe00a23();
+		
+		//Ejercicio 5
+		/*En un supermercado una clienta pone en su carrito los artículos que va tomando de los estantes. 
+		 * La señora quiere asegurarse de que el cajero le cobre bien lo que ella ha comprado, por lo que 
+		 * cada vez que toma un artículo anota su precio junto con la cantidad de artículos iguales que ha 
+		 * tomado y determina cuánto dinero gastará en ese artículo; a esto, le suma lo que ira gastando en 
+		 * los demás artículos, hasta que decide que ya tomó todo lo que necesitaba. Ayúdele a esta señora a 
+		 * obtener el total de sus compras.*/
+		
+		//dadoQueComproNArticulosEnElSupermercadoConNValorSacarElTotal();
+	}
+
+	private static void dadoQueComproNArticulosEnElSupermercadoConNValorSacarElTotal() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private static void dadoQueTengoUnRelojDigitalImprimirTodoElRangoHorarioDe00a23() {
