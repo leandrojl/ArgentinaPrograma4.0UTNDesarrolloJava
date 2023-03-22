@@ -84,6 +84,7 @@ public class ClaseDePrueba {
 			
 			
 		}while(exitWhile);
+		teclado.close();
 		
 	}
 
@@ -154,7 +155,7 @@ public class ClaseDePrueba {
 		
 		
 		}while(exitWhile);
-		
+		teclado.close();
 		return arrayDeNumeros;
 	}
 

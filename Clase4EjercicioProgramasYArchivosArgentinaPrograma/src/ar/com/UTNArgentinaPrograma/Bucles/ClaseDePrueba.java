@@ -79,7 +79,7 @@ public class ClaseDePrueba {
 				System.out.println("El numero "+arrayDeNumeros[i]+" es neutro");
 			}
 		}
-		
+		teclado.close();
 	}
 
 	private static void dadoQueElUsuarioIngresa10NumerosSoloMuestroLosMultiplosDe2() {
@@ -101,6 +101,7 @@ public class ClaseDePrueba {
 			}
 		}
 		System.out.println("Los numeros ingresados son"+ Arrays.toString(arrayDeNumeros));
+		teclado.close();
 	}
 
 	private static void dadoQueSeIngresePorTecladoUnNumeroMostrarLaTablaDeMutiplicarDel0al10ImprimiendoElMultiplicandoMultiplicadorYElProducto() {
@@ -118,7 +119,7 @@ public class ClaseDePrueba {
 			resultadoAMostrar= numeroAMultiplicar * i;
 			System.out.println("Multiplicando: "+numeroAMultiplicar+" Multiplicador: "+i+" Producto: "+resultadoAMostrar);
 		}
-		
+		teclado.close();
 	}
 
 }
