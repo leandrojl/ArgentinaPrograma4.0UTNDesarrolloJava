@@ -2,22 +2,16 @@ package ar.com.UTNArgentinaPrograma.Supermercado;
 
 public class Producto {
 	String nombre;
+	int cantidad;
+	int precio;
 	String codigo;
-	Float precio;
-	public Producto(String nombre, String codigo, Float precio) {
+	public Producto(int cantidad, String nombre, int precio, String codigo) {
 		super();
+		this.cantidad =  cantidad;
 		this.nombre = nombre;
-		this.codigo = codigo;
 		this.precio = precio;
-	}
-	
-	public Producto(String nombre) {
-		super();
-		this.nombre = nombre;
 		this.codigo = codigo;
-		this.precio = precio;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -34,14 +28,17 @@ public class Producto {
 		this.codigo = codigo;
 	}
 
-	public Float getPrecio() {
+	public int getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(Float precio) {
+	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-	
-	
-
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
 }

@@ -18,6 +18,7 @@ public class ClaseDePrueba {
 	public static void main(String[] args) {
 		
 		//METODO PARA CREAR UN TXT CON LOS ITEMS A COMPRAR Y DESPUES CONVERTIRLOS EN OBJETOS.
+		/*
 		String[] listaDeItems = {"jabon en polvo", "mermelada de frutilla","chocolate aguila","flan con dulce de leche"};
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\ArgentinaPrograma4.0UTNDesarrolloJavaWorkspace\\Clase5EjercicioPOOJavaArgentinaPrograma\\src\\ar\\com\\UTNArgentinaPrograma\\listaDeItemsAComprar.txt"));
@@ -30,7 +31,7 @@ public class ClaseDePrueba {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		//METODO PARA CREAR ARCHIVOS TEMPORALES EN C:\Users\leand\AppData\Local\Temp\
 		
 		/*
@@ -45,22 +46,32 @@ public class ClaseDePrueba {
 		*/
 		
 		//METODO PARA LEER LA LISTADEITEMS[]
-		
+		Carrito carroDeSupermercado = new Carrito();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("D:\\ArgentinaPrograma4.0UTNDesarrolloJavaWorkspace\\Clase5EjercicioPOOJavaArgentinaPrograma\\src\\ar\\com\\UTNArgentinaPrograma\\listaDeItemsAComprar.txt"));
 			String line;
-			Carrito carroDeSupermercado = new Carrito();
+			String[] tokens;
 			while((line = reader.readLine()) != null) {
-				carroDeSupermercado.agregarProducto(new Producto(line));
-				System.out.println(line);
-				
+				tokens = line.split(",");
+				int cantidad = Integer.parseInt(tokens[0]);
+				String nombreProducto = tokens[1];
+				int precio = Integer.parseInt(tokens[2]);
+				String codigo = tokens[3];
+				carroDeSupermercado.agregarProducto(new Producto(cantidad,nombreProducto,precio,codigo));
+				//System.out.println(line);
 			}
 			reader.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("Los productos del carro del supermercado son: ");
+		int precioTotal=0;
+		for(int i=0; i< carroDeSupermercado.getProductos().size();i++) {
+			System.out.println("Cantidad: "+carroDeSupermercado.getProductos().get(i).getCantidad() +" Nombre: "+carroDeSupermercado.getProductos().get(i).getNombre()+" Precio: $"+carroDeSupermercado.getProductos().get(i).getPrecio()+" y su codigo es= "+carroDeSupermercado.getProductos().get(i).getCodigo());
+			precioTotal = precioTotal+ (carroDeSupermercado.getProductos().get(i).getPrecio()*carroDeSupermercado.getProductos().get(i).getCantidad());
+		}
+		System.out.println("El precio total es: $"+precioTotal);
 	}
 
 }
