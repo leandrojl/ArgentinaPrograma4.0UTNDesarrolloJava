@@ -10,6 +10,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import ar.com.UTNArgentinaPrograma.Supermercado.Carrito;
+import ar.com.UTNArgentinaPrograma.Supermercado.ItemCarrito;
+import ar.com.UTNArgentinaPrograma.Supermercado.Persona;
 import ar.com.UTNArgentinaPrograma.Supermercado.Producto;
 
 
@@ -46,7 +48,7 @@ public class ClaseDePrueba {
 		*/
 		
 		//METODO PARA LEER LA LISTADEITEMS[]
-		Carrito carroDeSupermercado = new Carrito();
+		Carrito carroDeSupermercado = new Carrito(new Persona("Nahuel","Molina",37));
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("D:\\ArgentinaPrograma4.0UTNDesarrolloJavaWorkspace\\Clase5EjercicioPOOJavaArgentinaPrograma\\src\\ar\\com\\UTNArgentinaPrograma\\listaDeItemsAComprar.txt"));
 			String line;
@@ -57,7 +59,7 @@ public class ClaseDePrueba {
 				String nombreProducto = tokens[1];
 				int precio = Integer.parseInt(tokens[2]);
 				String codigo = tokens[3];
-				carroDeSupermercado.agregarProducto(new Producto(cantidad,nombreProducto,precio,codigo));
+				carroDeSupermercado.agregarProducto(new ItemCarrito(cantidad,nombreProducto,precio,codigo));
 				//System.out.println(line);
 			}
 			reader.close();

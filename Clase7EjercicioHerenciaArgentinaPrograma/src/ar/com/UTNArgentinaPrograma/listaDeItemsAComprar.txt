@@ -1,0 +1,4 @@
+1,Jabon en polvo,10,0001
+1,Mermelada de frutilla,10,0002
+1,Chocolate aguila,10,0003
+1,Flan con dulce de leche,10,0004

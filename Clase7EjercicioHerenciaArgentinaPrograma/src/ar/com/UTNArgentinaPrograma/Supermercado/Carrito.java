@@ -3,7 +3,6 @@ package ar.com.UTNArgentinaPrograma.Supermercado;
 import java.util.ArrayList;
 
 public class Carrito {
-	
 	Persona persona;
 	Descuento descuento;
 	
