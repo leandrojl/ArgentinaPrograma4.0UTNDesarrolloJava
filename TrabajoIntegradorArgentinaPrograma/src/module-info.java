@@ -6,4 +6,6 @@
  *
  */
 module TrabajoIntegradorArgentinaPrograma {
+	requires junit;
+	
 }
