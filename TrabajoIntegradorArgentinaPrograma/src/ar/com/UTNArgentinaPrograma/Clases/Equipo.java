@@ -1,9 +1,18 @@
 package ar.com.UTNArgentinaPrograma.Clases;
 
 public class Equipo {
+	String nombre="";
 
-	public Equipo(String string) {
-		// TODO Auto-generated constructor stub
+	public Equipo(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	

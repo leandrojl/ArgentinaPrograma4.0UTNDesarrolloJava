@@ -1,13 +1,21 @@
-package ar.com.UTNArgentinaProgramaTest;
+package ar.com.UTNArgentinaPrograma.Clases;
 
 public class Persona {
 	
 	private Pronostico pronostico=null;
+	String nombre;
+	
+	
 
-	public void agregarPronostico(Pronostico pronostico) {
-		this.pronostico = getPronostico();
-		
+	public Persona(Pronostico pronostico, String nombre) {
+		super();
+		this.pronostico = pronostico;
+		this.nombre = nombre;
 	}
+	
+	public Persona() {
+	}
+	
 
 	public Pronostico getPronostico() {
 		return pronostico;
