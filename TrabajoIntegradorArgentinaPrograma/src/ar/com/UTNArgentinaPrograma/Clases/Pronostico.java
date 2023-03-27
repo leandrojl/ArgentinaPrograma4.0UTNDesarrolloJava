@@ -5,17 +5,23 @@ import java.util.ArrayList;
 public class Pronostico {
 	
 	private ArrayList<Ronda> rondas = new ArrayList<Ronda>();
-	
+	private RESULTADO resultado;
 	
 
 	public Pronostico(ArrayList<Ronda> rondas) {
 		super();
 		this.rondas = rondas;
 	}
+	
+	public Pronostico(ArrayList<Ronda> rondas, RESULTADO resultado) {
+		super();
+		this.rondas = rondas;
+		this.resultado = resultado;
+	}
 
 	public Pronostico() {
 		super();
-		this.rondas = rondas;
+		
 	}
 
 	public void agregarRonda(Ronda ronda) {
@@ -25,6 +31,15 @@ public class Pronostico {
 
 	public ArrayList<Ronda> getRondas() {
 		return rondas;
+	}
+	
+
+	public RESULTADO getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(RESULTADO resultado) {
+		this.resultado = resultado;
 	}
 
 	public void setRondas(ArrayList<Ronda> rondas) {
