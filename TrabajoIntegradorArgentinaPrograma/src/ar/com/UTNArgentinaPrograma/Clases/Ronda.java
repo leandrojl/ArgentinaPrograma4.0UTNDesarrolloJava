@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Ronda {
 	
-	private ArrayList<Partido> partidos = new ArrayList<Partido>(4);
+	private ArrayList<Partido> partidos = new ArrayList<Partido>(2);
 	
 	public Ronda(ArrayList<Partido> partidos) {
 		super();
