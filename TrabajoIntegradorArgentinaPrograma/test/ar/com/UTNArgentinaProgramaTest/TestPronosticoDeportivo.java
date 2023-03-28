@@ -1,14 +1,14 @@
 package ar.com.UTNArgentinaProgramaTest;
 
 import org.junit.Test;
-
+import org.junit.Assert;
 import ar.com.UTNArgentinaPrograma.Clases.Equipo;
 import ar.com.UTNArgentinaPrograma.Clases.Partido;
 import ar.com.UTNArgentinaPrograma.Clases.Persona;
 import ar.com.UTNArgentinaPrograma.Clases.Pronostico;
 import ar.com.UTNArgentinaPrograma.Clases.RESULTADO;
 import ar.com.UTNArgentinaPrograma.Clases.Ronda;
-import junit.framework.Assert;
+
 
 public class TestPronosticoDeportivo {
 	
@@ -72,7 +72,7 @@ public void queSePuedaCrearUnPronosticoConUnaRondaYUnPartido() {
 	Equipo equipo1 = new Equipo("Arabia Saudita");
 	Equipo equipo2 = new Equipo("Argentina");
 	cuandoAgregoLaRondaAlPronostico(pronostico, ronda);
-	entoncesTengoElPronosticoEnLaRonda(ronda, pronostico);
+	entoncesTengoElPronosticoConLaRonda(ronda, pronostico);
 }
 
 @Test
@@ -92,7 +92,7 @@ public void queUnaPersonaTengaUnPronosticoConUnaRondaConUnPartido() {
 
 @Test
 public void queUnaPersonaTengaUnPronosticoConUnaRondaConDosPartidosArabiaSauditaVsArgentinaSaleDosAUnoYPoloniaVsMexicoSaleCeroACero() {
-	Persona persona =dadoQueTengoUnaPersona();
+	Persona persona =dadoQueTengoUnaPersona(); //devuelve el constructor new Persona();
 	Pronostico pronostico = dadoQueTengoUnPronostico();
 	Ronda ronda = dadoQueTengoUnaRonda();
 	Partido partidoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
@@ -106,27 +106,56 @@ public void queUnaPersonaTengaUnPronosticoConUnaRondaConDosPartidosArabiaSaudita
 	cuandoGuardoLosEquiposEnElPartido(partidoMexicoVsPolonia, equipo3, equipo4);
 	cuandoUnPartidoLeOtorgoUnResultado(partidoArabiaSauditaVsArgentina, 2,1);
 	cuandoUnPartidoLeOtorgoUnResultado(partidoMexicoVsPolonia, 0,0);
-	cuandoAgregoElPartidoALaRonda(ronda, partidoArabiaSauditaVsArgentina);
-	cuandoAgregoElPartidoALaRonda(ronda, partidoMexicoVsPolonia);
+	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(ronda, partidoArabiaSauditaVsArgentina);
+	cuandoAgregoElPartidoEnLaPosicionUnoDeLaRonda(ronda, partidoMexicoVsPolonia);
+	//cuandoAgregoElPartidoALaRonda(ronda, partidoArabiaSauditaVsArgentina);
+	//cuandoAgregoElPartidoALaRonda(ronda, partidoMexicoVsPolonia);
 	cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,ronda);
 	cuandoUnaPersonaTieneUnPronostico(persona, pronostico);
-	entoncesTengoUnPronosticoConUnaRondaConElPartidoArabiaSauditaVsArgentinaSaleDosAUno(persona,partidoArabiaSauditaVsArgentina, equipo1, equipo2);
-	entoncesTengoUnPronosticoConUnaRondaConElPartidoMexicoVsPoloniaSaleCeroACero(persona,partidoMexicoVsPolonia, equipo3, equipo4);
+	
+	entoncesLaPersonaTieneUnPronostico(persona, pronostico);
+	entoncesTengoElPronosticoConLaRonda(ronda, pronostico);
+	entoncesTengoUnaRondaConUnPartido(ronda, partidoArabiaSauditaVsArgentina);
+	entoncesTengoUnaRondaConUnPartido(ronda, partidoMexicoVsPolonia);
+	entoncesTengoUnPartidoArabiaSauditaVsArgentina(partidoArabiaSauditaVsArgentina, equipo1, equipo2);
+	entoncesTengoUnPartidoMexicoVsPolonia(partidoMexicoVsPolonia, equipo3, equipo4);
+	entoncesElPartidoArabiaSauditaVsArgentinaSaleDosAUno(partidoArabiaSauditaVsArgentina,2,1);
+	entoncesElPartidoMexicoVsPoloniaSaleCeroACero(partidoMexicoVsPolonia, 0, 0);
 }
 
 
 
-private void entoncesTengoUnPronosticoConUnaRondaConElPartidoMexicoVsPoloniaSaleCeroACero(Persona persona, Partido partido,
-		Equipo mexico, Equipo polonia) {
-	//VERIFICAR COMO ACCEDER AL ARRAYLIST DE PARTIDOS PARA PODER IDENTIFICAR X PARTIDO
-	Assert.assertTrue(persona.getPronostico().getRondas().get(0).getPartidos().get(1).getEquipo1().equals(mexico) && persona.getPronostico().getRondas().get(0).getPartidos().get(0).getEquipo2().equals(polonia));
+private void entoncesElPartidoMexicoVsPoloniaSaleCeroACero(Partido partidoMexicoVsPolonia, Integer golesMexico, Integer golesPolonia) {
+	Assert.assertTrue(partidoMexicoVsPolonia.getGolesEquipoUno() == golesMexico);
+	Assert.assertTrue(partidoMexicoVsPolonia.getGolesEquipoDos() == golesPolonia);
+}
+
+private void entoncesElPartidoArabiaSauditaVsArgentinaSaleDosAUno(Partido partidoArabiaSauditaVsArgentina, Integer golesArabiaSaudita,
+		Integer golesArgentina) {
+	Assert.assertTrue(partidoArabiaSauditaVsArgentina.getGolesEquipoUno() == golesArabiaSaudita);
+	Assert.assertTrue(partidoArabiaSauditaVsArgentina.getGolesEquipoDos() == golesArgentina);
 	
 }
 
-private void entoncesTengoUnPronosticoConUnaRondaConElPartidoArabiaSauditaVsArgentinaSaleDosAUno(Persona persona, Partido partido,
-		Equipo arabiaSaudita, Equipo argentina) {
-	//VERIFICAR COMO ACCEDER AL ARRAYLIST DE PARTIDOS PARA PODER IDENTIFICAR X PARTIDO
-	Assert.assertTrue(persona.getPronostico().getRondas().get(0).getPartidos().get(0).getEquipo1().equals(arabiaSaudita) && persona.getPronostico().getRondas().get(0).getPartidos().get(0).getEquipo2().equals(argentina));
+private void entoncesTengoUnPartidoMexicoVsPolonia(Partido partidoMexicoVsPolonia, Equipo equipo3, Equipo equipo4) {
+	Assert.assertTrue(partidoMexicoVsPolonia.getEquipo1().equals(equipo3));
+	Assert.assertTrue(partidoMexicoVsPolonia.getEquipo2().equals(equipo4));
+}
+
+private void entoncesTengoUnPartidoArabiaSauditaVsArgentina(Partido partidoArabiaSauditaVsArgentina, Equipo equipo1,
+		Equipo equipo2) {
+	Assert.assertTrue(partidoArabiaSauditaVsArgentina.getEquipo1().equals(equipo1));
+	Assert.assertTrue(partidoArabiaSauditaVsArgentina.getEquipo2().equals(equipo2));
+	
+}
+
+private void cuandoAgregoElPartidoEnLaPosicionUnoDeLaRonda(Ronda ronda, Partido partidoArabiaSauditaVsArgentina) {
+	ronda.getPartidos().add(1, partidoArabiaSauditaVsArgentina);
+	
+}
+
+private void cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(Ronda ronda, Partido partidoArabiaSauditaVsArgentina) {
+	ronda.getPartidos().add(0, partidoArabiaSauditaVsArgentina);
 	
 }
 
@@ -135,7 +164,7 @@ private void entoncesLaPersonaTieneUnPronostico(Persona persona, Pronostico pron
 	
 }
 
-private void entoncesTengoElPronosticoEnLaRonda(Ronda ronda, Pronostico pronostico) {
+private void entoncesTengoElPronosticoConLaRonda(Ronda ronda, Pronostico pronostico) {
 	Assert.assertTrue(pronostico.getRondas().contains(ronda));
 }
 
