@@ -14,13 +14,10 @@ public class TestPronosticoDeportivo {
 	
 @Test
 public void queSePuedaCrearUnPartidoConDosEquipos(){
-	
 	//dadoQueTengoUnPartidoYDosEquipos
 	Partido partido = new Partido();
 	Equipo equipo1 = new Equipo("Argentina");
 	Equipo equipo2 = new Equipo("Arabia Saudita");
-	
-	
 	cuandoConsultoSiSeCreoElEquipo1(equipo1);
 	cuandoConsultoSiSeCreoElEquipo2(equipo2);
 	cuandoGuardoLosEquiposEnElPartido(partido, equipo1, equipo2);
@@ -37,9 +34,7 @@ public void queSePuedaCrearUnaPersona() {
 public void queUnaPersonaTengaPronosticos() {
 	Persona persona =dadoQueTengoUnaPersona();
 	Pronostico pronostico = dadoQueTengoUnPronostico();
-	
 	cuandoUnaPersonaTieneUnPronostico(persona, pronostico);
-	
 	entoncesLaPersonaTieneUnPronostico(persona, pronostico);
 }
 
@@ -92,6 +87,7 @@ public void queUnaPersonaTengaUnPronosticoConUnaRondaConUnPartido() {
 
 @Test
 public void queUnaPersonaTengaUnPronosticoConUnaRondaConDosPartidosArabiaSauditaVsArgentinaSaleDosAUnoYPoloniaVsMexicoSaleCeroACero() {
+	//GIVEN
 	Persona persona =dadoQueTengoUnaPersona(); //devuelve el constructor new Persona();
 	Pronostico pronostico = dadoQueTengoUnPronostico();
 	Ronda ronda = dadoQueTengoUnaRonda();
@@ -101,7 +97,7 @@ public void queUnaPersonaTengaUnPronosticoConUnaRondaConDosPartidosArabiaSaudita
 	Equipo equipo2 = new Equipo("Argentina");
 	Equipo equipo3 = new Equipo("Mexico");
 	Equipo equipo4 = new Equipo("Polonia");
-	
+	//WHEN
 	cuandoGuardoLosEquiposEnElPartido(partidoArabiaSauditaVsArgentina, equipo1, equipo2);
 	cuandoGuardoLosEquiposEnElPartido(partidoMexicoVsPolonia, equipo3, equipo4);
 	cuandoUnPartidoLeOtorgoUnResultado(partidoArabiaSauditaVsArgentina, 2,1);
@@ -112,7 +108,7 @@ public void queUnaPersonaTengaUnPronosticoConUnaRondaConDosPartidosArabiaSaudita
 	//cuandoAgregoElPartidoALaRonda(ronda, partidoMexicoVsPolonia);
 	cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,ronda);
 	cuandoUnaPersonaTieneUnPronostico(persona, pronostico);
-	
+	//THEN
 	entoncesLaPersonaTieneUnPronostico(persona, pronostico);
 	entoncesTengoElPronosticoConLaRonda(ronda, pronostico);
 	entoncesTengoUnaRondaConUnPartido(ronda, partidoArabiaSauditaVsArgentina);
@@ -123,7 +119,42 @@ public void queUnaPersonaTengaUnPronosticoConUnaRondaConDosPartidosArabiaSaudita
 	entoncesElPartidoMexicoVsPoloniaSaleCeroACero(partidoMexicoVsPolonia, 0, 0);
 }
 
+@Test
+public void queUnaPersonTengaUnPronosticoConUnPartidoConResultado() {
+	//GIVEN
+	Equipo equipo1 = new Equipo("Arabia Saudita");
+	Equipo equipo2 = new Equipo("Argentina");
+	Persona persona =dadoQueTengoUnaPersona(); //devuelve el constructor new Persona();
+	Pronostico pronostico = dadoQueTengoUnPronostico();
+	Ronda ronda = dadoQueTengoUnaRonda();
+	Partido partidoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
+	//WHEN
+	cuandoGuardoLosEquiposEnElPartido(partidoArabiaSauditaVsArgentina, equipo1, equipo2);
+	cuandoLaPersonaTieneUnResultadoDelEquipo(partidoArabiaSauditaVsArgentina, equipo2, RESULTADO.GANADOR);
+	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(ronda, partidoArabiaSauditaVsArgentina);
+	cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,ronda);
+	cuandoUnaPersonaTieneUnPronostico(persona, pronostico);
+	//THEN
+	entoncesEnElPartidoArgentinaTieneUnResultadoGanador(partidoArabiaSauditaVsArgentina, RESULTADO.GANADOR);
+	entoncesEnElPartidoArabiaSauditaTieneUnResultadoPerdedor(partidoArabiaSauditaVsArgentina, RESULTADO.PERDEDOR);
+}
 
+private void entoncesEnElPartidoArabiaSauditaTieneUnResultadoPerdedor(Partido partido,RESULTADO resultado) {
+	Assert.assertTrue(partido.getResultadoEquipoUno().equals(resultado));
+	
+}
+
+private void entoncesEnElPartidoArgentinaTieneUnResultadoGanador(Partido partido,RESULTADO resultado) {
+	Assert.assertTrue(partido.getResultadoEquipoDos().equals(resultado));
+	
+}
+
+private void cuandoLaPersonaTieneUnResultadoDelEquipo(Partido partido, Equipo equipo1,
+		RESULTADO resultado) {
+	
+	partido.agregarResultado(equipo1, resultado);
+	
+}
 
 
 private void entoncesElPartidoMexicoVsPoloniaSaleCeroACero(Partido partidoMexicoVsPolonia, Integer golesMexico, Integer golesPolonia) {
@@ -177,7 +208,7 @@ private void cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(Pronostico pronosti
 	pronostico.agregarRonda(0,ronda);
 }
 
-@SuppressWarnings("deprecation")
+
 private void entoncesLaPersonaTieneUnPronosticoConUnaRondaConUnPartido(Persona persona, Pronostico pronostico, Ronda ronda) {
 	Assert.assertTrue(persona.getPronostico().getRondas().get(0).equals(ronda));
 }
