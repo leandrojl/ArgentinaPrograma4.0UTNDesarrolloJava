@@ -137,6 +137,37 @@ public void queUnaPersonTengaUnPronosticoConUnPartidoConResultado() {
 	//THEN
 	entoncesEnElPartidoArgentinaTieneUnResultadoGanador(partidoArabiaSauditaVsArgentina, RESULTADO.GANADOR);
 	entoncesEnElPartidoArabiaSauditaTieneUnResultadoPerdedor(partidoArabiaSauditaVsArgentina, RESULTADO.PERDEDOR);
+	
+}
+
+@Test
+public void queUnPronosticoAcierteUnResultado() {
+	//GIVEN A PERSON WITH A SPORTS FORECAST
+	Persona persona =dadoQueTengoUnaPersona();
+	Pronostico pronostico = dadoQueTengoUnPronostico();
+	Ronda rondaPronosticoPersona = dadoQueTengoUnaRonda();
+	Partido partidoPronosticoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
+	Equipo equipoPersonaPronosticoArabiaSaudita = new Equipo("Arabia Saudita");
+	Equipo equipoPersonaPronosticoArgentina = new Equipo("Argentina");
+	
+	//WHEN
+	cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,rondaPronosticoPersona);
+	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(rondaPronosticoPersona, partidoPronosticoArabiaSauditaVsArgentina);
+	cuandoGuardoLosEquiposEnElPartido(partidoPronosticoArabiaSauditaVsArgentina, equipoPersonaPronosticoArabiaSaudita,  equipoPersonaPronosticoArgentina);
+	cuandoLaPersonaTieneUnResultadoDelEquipo(partidoPronosticoArabiaSauditaVsArgentina, equipoPersonaPronosticoArgentina, RESULTADO.GANADOR);
+		
+	//GIVEN A RESULT BETWEEN TWO TEAMS
+	Ronda rondaResultados = dadoQueTengoUnaRonda();
+	Partido partidoResultadoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
+	Equipo equipoResultadoArabiaSaudita = new Equipo("Arabia Saudita");
+	Equipo equipoResultadoArgentina = new Equipo("Argentina");
+	
+	//WHEN
+	cuandoGuardoLosEquiposEnElPartido(partidoResultadoArabiaSauditaVsArgentina,equipoResultadoArabiaSaudita , equipoResultadoArgentina);
+	cuandoUnPartidoLeOtorgoUnResultado(partidoResultadoArabiaSauditaVsArgentina, 2,1);
+	
+	
+	
 }
 
 private void entoncesEnElPartidoArabiaSauditaTieneUnResultadoPerdedor(Partido partido,RESULTADO resultado) {
