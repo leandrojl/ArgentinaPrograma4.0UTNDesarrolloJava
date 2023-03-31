@@ -122,15 +122,15 @@ public void queUnaPersonaTengaUnPronosticoConUnaRondaConDosPartidosArabiaSaudita
 @Test
 public void queUnaPersonTengaUnPronosticoConUnPartidoConResultado() {
 	//GIVEN
-	Equipo equipo1 = new Equipo("Arabia Saudita");
-	Equipo equipo2 = new Equipo("Argentina");
+	Equipo arabiaSaudita = new Equipo("Arabia Saudita");
+	Equipo argentina = new Equipo("Argentina");
 	Persona persona =dadoQueTengoUnaPersona(); //devuelve el constructor new Persona();
 	Pronostico pronostico = dadoQueTengoUnPronostico();
 	Ronda ronda = dadoQueTengoUnaRonda();
 	Partido partidoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
 	//WHEN
-	cuandoGuardoLosEquiposEnElPartido(partidoArabiaSauditaVsArgentina, equipo1, equipo2);
-	cuandoLaPersonaTieneUnResultadoDelEquipo(partidoArabiaSauditaVsArgentina, equipo2, RESULTADO.GANADOR);
+	cuandoGuardoLosEquiposEnElPartido(partidoArabiaSauditaVsArgentina, arabiaSaudita, argentina);
+	cuandoLaPersonaTieneUnResultadoDelEquipo(partidoArabiaSauditaVsArgentina, argentina, RESULTADO.GANADOR);
 	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(ronda, partidoArabiaSauditaVsArgentina);
 	cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,ronda);
 	cuandoUnaPersonaTieneUnPronostico(persona, pronostico);
@@ -145,16 +145,17 @@ public void queUnPronosticoAcierteUnResultado() {
 	//GIVEN A PERSON WITH A SPORTS FORECAST
 	Persona persona =dadoQueTengoUnaPersona();
 	Pronostico pronostico = dadoQueTengoUnPronostico();
-	Ronda rondaPronosticoPersona = dadoQueTengoUnaRonda();
+	Ronda rondaPronostico = dadoQueTengoUnaRonda();
 	Partido partidoPronosticoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
-	Equipo equipoPersonaPronosticoArabiaSaudita = new Equipo("Arabia Saudita");
-	Equipo equipoPersonaPronosticoArgentina = new Equipo("Argentina");
+	Equipo equipoPronosticoArabiaSaudita = new Equipo("Arabia Saudita");
+	Equipo equipoPronosticoArgentina = new Equipo("Argentina");
 	
 	//WHEN
-	cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,rondaPronosticoPersona);
-	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(rondaPronosticoPersona, partidoPronosticoArabiaSauditaVsArgentina);
-	cuandoGuardoLosEquiposEnElPartido(partidoPronosticoArabiaSauditaVsArgentina, equipoPersonaPronosticoArabiaSaudita,  equipoPersonaPronosticoArgentina);
-	cuandoLaPersonaTieneUnResultadoDelEquipo(partidoPronosticoArabiaSauditaVsArgentina, equipoPersonaPronosticoArgentina, RESULTADO.GANADOR);
+	cuandoUnaPersonaTieneUnPronostico(persona, pronostico);
+	cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,rondaPronostico);
+	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(rondaPronostico, partidoPronosticoArabiaSauditaVsArgentina);
+	cuandoGuardoLosEquiposEnElPartido(partidoPronosticoArabiaSauditaVsArgentina, equipoPronosticoArabiaSaudita,  equipoPronosticoArgentina);
+	cuandoLaPersonaTieneUnResultadoDelEquipo(partidoPronosticoArabiaSauditaVsArgentina, equipoPronosticoArabiaSaudita, RESULTADO.GANADOR);
 		
 	//GIVEN A RESULT BETWEEN TWO TEAMS
 	Ronda rondaResultados = dadoQueTengoUnaRonda();
@@ -163,10 +164,24 @@ public void queUnPronosticoAcierteUnResultado() {
 	Equipo equipoResultadoArgentina = new Equipo("Argentina");
 	
 	//WHEN
+	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(rondaResultados, partidoResultadoArabiaSauditaVsArgentina);
 	cuandoGuardoLosEquiposEnElPartido(partidoResultadoArabiaSauditaVsArgentina,equipoResultadoArabiaSaudita , equipoResultadoArgentina);
 	cuandoUnPartidoLeOtorgoUnResultado(partidoResultadoArabiaSauditaVsArgentina, 2,1);
+	cuandoLeAsignoUnResultadoElEquipo(partidoResultadoArabiaSauditaVsArgentina, equipoPronosticoArabiaSaudita, RESULTADO.GANADOR);
+	//cuandoLeAsignoUnResultadoElEquipo(partidoResultadoArabiaSauditaVsArgentina, equipoPronosticoArgentina, RESULTADO.PERDEDOR );
+	//THEN
+	entoncesLaPersonaAcertoElPronostico(pronostico,partidoResultadoArabiaSauditaVsArgentina);
+}
+
+private void cuandoLeAsignoUnResultadoElEquipo(Partido partido,
+		Equipo equipo, RESULTADO resultado) {
+	partido.agregarResultado(equipo, resultado);
 	
-	
+}
+
+private void entoncesLaPersonaAcertoElPronostico(Pronostico pronostico,
+		Partido partido) {
+	Assert.assertEquals(pronostico.getRondas().get(0).getPartidos().get(0).getResultadoEquipoUno() , partido.getResultadoEquipoUno());
 	
 }
 
