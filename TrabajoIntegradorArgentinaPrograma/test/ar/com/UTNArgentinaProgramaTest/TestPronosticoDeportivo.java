@@ -173,6 +173,54 @@ public void queUnPronosticoAcierteUnResultado() {
 	entoncesLaPersonaAcertoElPronostico(pronostico,partidoResultadoArabiaSauditaVsArgentina);
 }
 
+@Test
+public void unaPersonaAciertaUnPartidoDeUnPronosticoYSumaUnPunto() {
+	//GIVEN A PERSON WITH A SPORTS FORECAST
+		Persona persona =dadoQueTengoUnaPersona();
+		Pronostico pronostico = dadoQueTengoUnPronostico();
+		Ronda rondaPronostico = dadoQueTengoUnaRonda();
+		Partido partidoPronosticoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
+		Equipo equipoPronosticoArabiaSaudita = new Equipo("Arabia Saudita");
+		Equipo equipoPronosticoArgentina = new Equipo("Argentina");
+		
+		//GIVEN A RESULT BETWEEN TWO TEAMS
+		Ronda rondaResultados = dadoQueTengoUnaRonda();
+		Partido partidoResultadoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
+		Equipo equipoResultadoArabiaSaudita = new Equipo("Arabia Saudita");
+		Equipo equipoResultadoArgentina = new Equipo("Argentina");
+		
+		//WHEN
+		cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(rondaResultados, partidoResultadoArabiaSauditaVsArgentina);
+		cuandoGuardoLosEquiposEnElPartido(partidoResultadoArabiaSauditaVsArgentina,equipoResultadoArabiaSaudita , equipoResultadoArgentina);
+		cuandoUnPartidoLeOtorgoUnResultado(partidoResultadoArabiaSauditaVsArgentina, 2,1);
+		cuandoLeAsignoUnResultadoElEquipo(partidoResultadoArabiaSauditaVsArgentina, equipoPronosticoArabiaSaudita, RESULTADO.GANADOR);
+		//cuandoLeAsignoUnResultadoElEquipo(partidoResultadoArabiaSauditaVsArgentina, equipoPronosticoArgentina, RESULTADO.PERDEDOR );
+		
+		//WHEN
+		cuandoUnaPersonaTieneUnPronostico(persona, pronostico);
+		cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(pronostico,rondaPronostico);
+		cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(rondaPronostico, partidoPronosticoArabiaSauditaVsArgentina);
+		cuandoGuardoLosEquiposEnElPartido(partidoPronosticoArabiaSauditaVsArgentina, equipoPronosticoArabiaSaudita,  equipoPronosticoArgentina);
+		cuandoLaPersonaTieneUnResultadoDelEquipo(partidoPronosticoArabiaSauditaVsArgentina, equipoPronosticoArabiaSaudita, RESULTADO.GANADOR);
+		cuandoLaPersonaActualizaSuPuntajeEnBaseAlResultado(persona, partidoPronosticoArabiaSauditaVsArgentina,partidoResultadoArabiaSauditaVsArgentina);
+		
+		//THEN
+		entoncesLaPersonaTieneUnPuntoPorAcertarElResultado(persona);
+	
+	
+}
+
+private void entoncesLaPersonaTieneUnPuntoPorAcertarElResultado(Persona persona) {
+	Assert.assertTrue(persona.getPuntaje() == 1);
+	
+}
+
+private void cuandoLaPersonaActualizaSuPuntajeEnBaseAlResultado(Persona persona,
+		Partido partidoPronostico, Partido partidoResultado) {
+	persona.actualizarPuntaje(partidoPronostico, partidoResultado);
+	
+}
+
 private void cuandoLeAsignoUnResultadoElEquipo(Partido partido,
 		Equipo equipo, RESULTADO resultado) {
 	partido.agregarResultado(equipo, resultado);
