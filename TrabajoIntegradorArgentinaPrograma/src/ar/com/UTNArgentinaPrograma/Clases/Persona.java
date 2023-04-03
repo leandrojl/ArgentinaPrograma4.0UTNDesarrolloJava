@@ -43,7 +43,7 @@ public class Persona {
 	public void actualizarPuntaje(Partido partidoPronostico, Partido partidoResultado) {
 		if(partidoPronostico.getResultadoEquipoUno().equals(partidoResultado.getResultadoEquipoUno())
 				&& partidoPronostico.getResultadoEquipoDos().equals(partidoResultado.getResultadoEquipoDos())) {
-			this.puntaje +=1;
+			this.puntaje = this.puntaje +1;
 		} 
 		
 	}
