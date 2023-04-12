@@ -155,7 +155,7 @@ public void queUnPronosticoAcierteUnResultado() {
 	cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(rondaPronosticoPersona, partidoPronosticoArabiaSauditaVsArgentina);
 	cuandoGuardoLosEquiposEnElPartido(partidoPronosticoArabiaSauditaVsArgentina, equipoPersonaPronosticoArabiaSaudita,  equipoPersonaPronosticoArgentina);
 	cuandoLaPersonaTieneUnResultadoDelEquipo(partidoPronosticoArabiaSauditaVsArgentina, equipoPersonaPronosticoArgentina, RESULTADO.GANADOR);
-		
+	
 	//GIVEN A RESULT BETWEEN TWO TEAMS
 	Ronda rondaResultados = dadoQueTengoUnaRonda();
 	Partido partidoResultadoArabiaSauditaVsArgentina = dadoQueTengoUnPartido();
