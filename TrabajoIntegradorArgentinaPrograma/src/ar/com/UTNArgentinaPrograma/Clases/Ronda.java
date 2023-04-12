@@ -13,7 +13,7 @@ public class Ronda {
 	
 	public Ronda() {
 		super();
-		this.partidos = partidos;
+		
 	}
 
 	public void agregarPartido(Partido partido) {
